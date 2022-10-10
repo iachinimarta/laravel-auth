@@ -34,7 +34,11 @@
                             <button type="button" class="btn btn-warning mx-2">
                                 <a href="{{route('admin.posts.edit', ['post' => $post->id])}}">Edit</a>
                             </button>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <form action="{{route('admin.posts.destroy', ['post' => $post->id])}}" method="POST" onsubmit="return confirm('Are you sure you want to delete the item?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </div>
                         
                     </td>
