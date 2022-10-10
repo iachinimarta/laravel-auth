@@ -1,6 +1,8 @@
 <template>
 
-    <h1>Mostriamo app all'avvio di vue</h1>
+    <div>
+        <h1>PRIMA DEL LOGIN</h1>
+    </div>
     
 </template>
 

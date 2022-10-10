@@ -1,3 +1,6 @@
+{{-- Pagina prima del login --}}
+@extends('layouts.app')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,6 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="{{route('login')}}">Login</a>
     <div id="root"></div>
     
     <script src="{{asset('js/app.js')}}"></script>
