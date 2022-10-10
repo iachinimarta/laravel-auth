@@ -19,10 +19,10 @@
 
             <div class="form-floating mb-4">
                 <label for="floatingTextarea">Content</label>
-                <textarea class="form-control @error('content') is-invalid @enderror" placeholder="Insert content here" id="floatingTextarea" name="content">{{old('content')}}</textarea>        
+                <textarea class="form-control @error('content') is-invalid @enderror" placeholder="Insert content here" id="floatingTextarea" name="content" required>{{old('content')}}</textarea>        
             </div>
 
-            @error('title')
+            @error('content')
                 <div class="invalid-feedback">
                     {{$message}}
                 </div>

@@ -48,9 +48,18 @@ class PostController extends Controller
         $newPost = new Post();
         $newPost->fill($data);
 
-        $slug = Str::slug($newPost->title, '-');
+        $slug = Str::slug($newPost->title, '-');      
+        $checkSlug = Post::where('slug', $slug)->first();
+        $counter = 1;
+
+        while($checkSlug) {
+            $slug = Str::slug($newPost->title . '-' . $counter, '-');
+            $counter++;
+            $checkSlug = Post::where('slug', $slug)->first();
+        };
+
         $newPost->slug = $slug;
-        
+
         $newPost->save();
 
         return redirect()->route('admin.posts.index')->with('status', 'Post creato con successo!');
@@ -77,7 +86,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('admin.posts.edit', ['post' => $post] );
     }
 
     /**
@@ -89,7 +99,32 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:50',
+            'content' => 'required|max:65535'
+        ]);
+
+        $data = $request->all();
+
+        $updatedPost = Post::find($id);
+
+        if($updatedPost->title !== $data['title']) {
+            $slug = Str::slug($data['title'], '-');      
+            $checkSlug = Post::where('slug', $slug)->first();
+            $counter = 1;
+
+            while($checkSlug) {
+                $slug = Str::slug($data['title'] . '-' . $counter, '-');
+                $counter++;
+                $checkSlug = Post::where('slug', $slug)->first();
+            };
+
+            $data['slug'] = $slug;
+        }
+
+        $updatedPost->update($data);
+
+        return redirect()->route('admin.posts.index')->with('status', 'Post modificato con successo!');
     }
 
     /**

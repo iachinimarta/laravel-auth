@@ -31,7 +31,9 @@
                             <button type="button" class="btn btn-info">
                                 <a href="{{route('admin.posts.show', ['post' => $post->id])}}">Info</a>
                             </button>
-                            <button type="button" class="btn btn-warning mx-2">Edit</button>
+                            <button type="button" class="btn btn-warning mx-2">
+                                <a href="{{route('admin.posts.edit', ['post' => $post->id])}}">Edit</a>
+                            </button>
                             <button type="button" class="btn btn-danger">Delete</button>
                         </div>
                         
