@@ -5,16 +5,18 @@
     <div class="container">
         <div>Index</div>
         <div class="d-flex justify-content-end mb-3">
-            <button type="button" class="btn btn-success">New</button>
+            <button type="button" class="btn btn-success">
+                <a href="{{route('admin.posts.create')}}">New</a>
+            </button>
         </div>
         
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Slug</th>
+                    <th scope="col" class="text-center">Action</th>
                 </tr>
                 </thead>
                 <tbody>
