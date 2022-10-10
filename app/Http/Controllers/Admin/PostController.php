@@ -15,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('admin.posts.index', ['postRecuperati' => $posts]);
     }
 
     /**
@@ -45,9 +46,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        return view('admin.posts.show', compact('product'));
+        $post = Post::find($id);
+        return view('admin.posts.show', ['post' => $post] );
     }
 
     /**
